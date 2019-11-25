@@ -1,0 +1,30 @@
+{
+    "name": "web-and-cow/wac-sentry",
+    "description": "Plugin to use Sentry in CakePHP 3",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "require": {
+        "php": "^7.0",
+        "cakephp/cakephp": "^3.5",
+        "sentry/sdk": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7|^6.0|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "WacSentry\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WacSentry\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "Web and cow"
+        }
+    ]
+}
