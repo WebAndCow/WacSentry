@@ -1,4 +1,5 @@
 <?php
+use Cake\Console\ConsoleErrorHandler;
 use Cake\Core\Configure;
 use Psr\Http\Message\ServerRequestInterface;
 use Cake\Http\ServerRequestFactory;
