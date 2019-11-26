@@ -15,7 +15,7 @@ composer require web-and-cow/wac-sentry
 
 Load the plugin :
 ```
-bin/cake plugin load WacSentry
+bin/cake plugin load WacSentry -b
 ```
 
 And add the configuration to your app.php :
