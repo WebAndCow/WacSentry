@@ -12,6 +12,7 @@ class SentryErrorHandlerMiddleware extends ErrorHandlerMiddleware {
         \Sentry\configureScope(function (\Sentry\State\Scope $scope) use ($ip, $request): void {
             $scope->setExtra('IP', $ip);
             $scope->setUser(['ID' => $request->session()->read('Auth.User.id')]);
+            $scope->setUser(['role' => $request->session()->read('Auth.User.role')]);
         });
 
         \Sentry\captureException($exception);
