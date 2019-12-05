@@ -24,3 +24,15 @@ And add the configuration to your app.php :
     'dsn' => 'https://XXXXXXXXXX@sentry.io/XXXXXX'
 ]
 ```
+
+You can send more informations to the issue about the user.
+To do this, add this optionnal configuration in the Sentry array in your app.php :
+```
+'Sentry' => [
+    'userFields' => [
+        'id',
+        'role',
+        ...
+    ]
+]
+```
