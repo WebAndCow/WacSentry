@@ -11,8 +11,22 @@ $isCli = PHP_SAPI === 'cli';
 if ($isCli) {
     (new ConsoleErrorHandler(Configure::read('Error')))->register();
 } else {
-    // Si on est en debug true, on gère les erreurs normalement
-    if (Configure::read('debug') === true) {
+    // Récupération de l'url actuelle
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+    // Tableau des mots interdits : Si un de ces mots est dans l'url, on ne fera pas appel à sentry
+    $unauthorizedWordsInUrl = [
+        'magento',
+        'wp-admin',
+        'wp-login',
+        'robots.txt'
+    ];
+
+    // Expression régulière qui vérifie si un un mot interdit est dans l'url
+    $exp = '/' . implode('|', array_map('preg_quote', $unauthorizedWordsInUrl)) . '/i';
+
+    // Si on est en debug true ou qu'il y a un mot interdit, on gère les erreurs normalement
+    if (Configure::read('debug') === true || preg_match($exp, $url)) {
         (new ErrorHandler(Configure::read('Error')))->register();
 
     // Sinon, on utilise Sentry
