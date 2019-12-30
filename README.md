@@ -9,11 +9,23 @@ You can find IP of client and users.id in the Sentry issue.
 You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
 
 The recommended way to install composer packages is :
+***CakePHP 3***
 ```
-composer require web-and-cow/wac-sentry
+composer require web-and-cow/wac-sentry:^1.0.0
+```
+
+***CakePHP 4***
+```
+composer require web-and-cow/wac-sentry:^2.0.0
 ```
 
 Load the plugin :
+***CakePHP 3***
+```
+bin/cake plugin load WacSentry -b
+```
+
+***CakePHP 4***
 ```
 bin/cake plugin load WacSentry
 ```
