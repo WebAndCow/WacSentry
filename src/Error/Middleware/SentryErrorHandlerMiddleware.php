@@ -3,9 +3,13 @@ namespace WacSentry\Error\Middleware;
 
 use \Cake\Error\Middleware\ErrorHandlerMiddleware as ErrorHandlerMiddleware;
 use Cake\Core\Configure;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Throwable;
 
 class SentryErrorHandlerMiddleware extends ErrorHandlerMiddleware {
-    public function handleException($exception, $request, $response)
+    
+    public function handleException(Throwable $exception, ServerRequestInterface $request): ResponseInterface
     {
         // Récupération de l'IP de l'user
         $ip = isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
@@ -17,7 +21,7 @@ class SentryErrorHandlerMiddleware extends ErrorHandlerMiddleware {
             // On récupère les champs de l'utilisateur qu'on souhaite envoyer dans l'issue
             if (!empty(Configure::read('Sentry.userFields'))) {
                 foreach (Configure::read('Sentry.userFields') as $userField) {
-                    $userFields[$userField] = $request->session()->read('Auth.User.' . $userField);
+                    $userFields[$userField] = $request->getSession()->read('Auth.User.' . $userField);
                 }
             }
 
@@ -29,6 +33,6 @@ class SentryErrorHandlerMiddleware extends ErrorHandlerMiddleware {
 
         \Sentry\captureException($exception);
 
-        return parent::handleException($exception, $request, $response);
+        return parent::handleException($exception, $request);
     }
 }

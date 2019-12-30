@@ -1,11 +1,11 @@
 <?php
 namespace WacSentry\Error;
-use Exception;
+use Throwable;
 
 use Cake\Error\ErrorHandler as ErrorHandler;
 
 class SentryErrorHandler extends ErrorHandler {
-    public function handleException(Exception $exception)
+    public function handleException(Throwable $exception): void
     {
         \Sentry\captureException($exception);
 
