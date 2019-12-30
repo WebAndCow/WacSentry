@@ -1,6 +1,6 @@
 {
     "name": "web-and-cow/wac-sentry",
-    "description": "Plugin to use Sentry in CakePHP 3",
+    "description": "Plugin to connect a CakePHP project to your Sentry account",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
