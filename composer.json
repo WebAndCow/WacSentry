@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.0",
-        "cakephp/cakephp": "^3.5",
+        "cakephp/cakephp": "^3.4",
         "sentry/sdk": "^2.0"
     },
     "require-dev": {

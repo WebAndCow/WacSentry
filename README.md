@@ -36,3 +36,15 @@ To do this, add this optionnal configuration in the Sentry array in your app.php
     ]
 ]
 ```
+
+You can also block event when a word is in the URL to avoid spam of bots.
+To do this, add this optionnal configuration in the Sentry array in your app.php :
+```
+'Sentry' => [
+    'unauthorizedWordsInUrl' => [
+        'robots.txt',
+        'magento',
+        ...
+    ]
+]
+```
