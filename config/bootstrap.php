@@ -22,6 +22,11 @@ if ($isCli) {
         'robots.txt'
     ];
 
+    // Si il y a d'autres mots interdits configurés dans App.php, on les ajoute
+    if (Configure::read('Sentry.unauthorizedWordsInUrl')) {
+        $unauthorizedWordsInUrl = array_merge(Configure::read('Sentry.unauthorizedWordsInUrl'), $unauthorizedWordsInUrl);
+    }
+
     // Expression régulière qui vérifie si un un mot interdit est dans l'url
     $exp = '/' . implode('|', array_map('preg_quote', $unauthorizedWordsInUrl)) . '/i';
 
