@@ -19,7 +19,20 @@ if ($isCli) {
         'magento',
         'wp-admin',
         'wp-login',
-        'robots.txt'
+        'robots.txt',
+        'Pma',
+        'Myadmin',
+        'Mysql',
+        'Wordpress',
+        'Cms',
+        'Website',
+        'Administrator',
+        'WpJson',
+        'changelog',
+        'AppleTouchIcon',
+        'Database',
+        'Shop',
+        'Server'
     ];
 
     // Si il y a d'autres mots interdits configurés dans App.php, on les ajoute
