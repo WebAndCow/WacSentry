@@ -32,7 +32,9 @@ if ($isCli) {
         'AppleTouchIcon',
         'Database',
         'Shop',
-        'Server'
+        'Server',
+        'Ajax',
+        'Thinkphp'
     ];
 
     // Si il y a d'autres mots interdits configurés dans App.php, on les ajoute
