@@ -19,6 +19,7 @@ if ($isCli) {
         'magento',
         'wp-admin',
         'wp-login',
+        'wp-includes',
         'robots.txt',
         'Pma',
         'Myadmin',
