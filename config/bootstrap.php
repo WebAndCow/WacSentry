@@ -23,8 +23,8 @@ if ($isCli) {
     // Expression régulière qui vérifie si un un mot interdit est dans l'url
     $exp = '/' . implode('|', array_map('preg_quote', $unauthorizedWordsInUrl)) . '/i';
 
-    // Si on est en debug true ou qu'il y a un mot interdit, on gère les erreurs normalement
-    if (Configure::read('debug') === true || preg_match($exp, $url)) {
+    // S'il y a un mot interdit, on gère les erreurs normalement
+    if (preg_match($exp, $url)) {
         (new ErrorHandler(Configure::read('Error')))->register();
 
     // Sinon, on utilise Sentry
