@@ -22,7 +22,6 @@ And add the configuration to your app.php :
 ```
 'Sentry' => [
     'dsn' => 'https://XXXXXXXXXX@sentry.io/XXXXXX', // The DSN PHP Key of Sentry
-    'production_only' => true, // Default true : if true, no send event if debug is false
     'avoid_bot_scan_errors' => true, // Default true : if true, MissingControllerException and MissingPluginException aren't sent to Sentry to avoid bot scan errors
     'userFields' => [ // List of user session values sent to Sentry
         'id',
