@@ -21,29 +21,17 @@ bin/cake plugin load WacSentry -b
 And add the configuration to your app.php :
 ```
 'Sentry' => [
-    'dsn' => 'https://XXXXXXXXXX@sentry.io/XXXXXX'
-]
-```
-
-You can send more informations to the issue about the user.
-To do this, add this optionnal configuration in the Sentry array in your app.php :
-```
-'Sentry' => [
-    'userFields' => [
+    'dsn' => 'https://XXXXXXXXXX@sentry.io/XXXXXX', // The DSN PHP Key of Sentry
+    'production_only' => true, // Default true : if true, no send event if debug is false
+    'avoid_bot_scan_errors' => true, // Default true : if true, MissingControllerException and MissingPluginException aren't sent to Sentry to avoid bot scan errors
+    'userFields' => [ // List of user session values sent to Sentry
         'id',
         'role',
         ...
-    ]
-]
-```
-
-You can also block event when a word is in the URL to avoid spam of bots.
-To do this, add this optionnal configuration in the Sentry array in your app.php :
-```
-'Sentry' => [
-    'unauthorizedWordsInUrl' => [
+    ],
+    'unauthorizedWordsInUrl' => [ // If a word of this array is in the url, the error event will not be sent to Sentry
         'robots.txt',
-        'magento',
+        'wp-admin',
         ...
     ]
 ]
