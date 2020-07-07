@@ -13,16 +13,9 @@ if ($isCli) {
 } else {
     // Récupération de l'url actuelle
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-    // Tableau des mots interdits : Si un de ces mots est dans l'url, on ne fera pas appel à sentry
-    $unauthorizedWordsInUrl = [
-        'magento',
-        'wp-admin',
-        'wp-login',
-        'robots.txt'
-    ];
-
+    
     // Si il y a d'autres mots interdits configurés dans App.php, on les ajoute
+    $unauthorizedWordsInUrl = [];
     if (Configure::read('Sentry.unauthorizedWordsInUrl')) {
         $unauthorizedWordsInUrl = array_merge(Configure::read('Sentry.unauthorizedWordsInUrl'), $unauthorizedWordsInUrl);
     }
