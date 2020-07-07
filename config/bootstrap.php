@@ -24,7 +24,7 @@ if ($isCli) {
     $exp = '/' . implode('|', array_map('preg_quote', $unauthorizedWordsInUrl)) . '/i';
 
     // Si on est en debug true ou qu'il y a un mot interdit, on gère les erreurs normalement
-    if (Configure::read('debug') === true || preg_match($exp, $url)) {
+    if (Configure::read('debug') === true || (!empty($unauthorizedWordsInUrl) && preg_match($exp, $url))) {
         (new ErrorHandler(Configure::read('Error')))->register();
 
     // Sinon, on utilise Sentry
