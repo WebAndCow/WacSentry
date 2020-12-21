@@ -12,12 +12,12 @@ The recommended way to install composer packages is :
 
 **CakePHP 3**
 ```
-composer require web-and-cow/wac-sentry:^1.0.0
+composer require web-and-cow/wac-sentry:"^1.0.0"
 ```
 
 **CakePHP 4**
 ```
-composer require web-and-cow/wac-sentry:^2.0.0
+composer require web-and-cow/wac-sentry:"^2.0.0"
 ```
 
 Load the plugin :
